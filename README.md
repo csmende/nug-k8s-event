@@ -20,8 +20,14 @@ If you chose AWS, fire up an Ubuntu instance & install kubectl:
 
 Step 3)
 
-Go to https://cloud.netapp.com, NetApp Kubernetes Service
+Go to https://cloud.netapp.com & sign in.
+
+Click on NetApp Kubernetes Service Start Free Trial.
+
+Click on + Add Cluster.
+
 Choose your cloud & follow authentication instructions. GCP & AWS are easiest.
+
 Install HAproxy (load balancer)
 
 Step 4)
