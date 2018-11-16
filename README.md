@@ -26,7 +26,7 @@ Click on + Add Cluster. Choose your cloud & follow authentication instructions. 
 
 Once the cluster is up and running, go to Solutions and + Add Solution.
 
-Install HAproxy (load balancer)
+Find, select & deploy HAproxy (load balancer).
 
 Step 4)
 
