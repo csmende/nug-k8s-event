@@ -20,7 +20,9 @@ If you chose AWS, fire up an Ubuntu instance & install kubectl:
 
 Step 3)
 
-Go to https://cloud.netapp.com & sign in. Click on NetApp Kubernetes Service Start Free Trial.
+Go to https://cloud.netapp.com. Look for the chat bubble on the bottom right from Phoebe & say HI!
+
+Then sign & click on NetApp Kubernetes Service Start Free Trial.
 
 Click on + Add Cluster. Choose your cloud & follow authentication instructions. GCP & AWS are easiest.
 
