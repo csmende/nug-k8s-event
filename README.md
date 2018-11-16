@@ -64,12 +64,12 @@ Step 6)
 
 Test retrieving the whoami http service. Using the HA Proxy load balancer IP.
 
-	curl -s http://xx.xx.xx.xx
+	curl -s http://YOUR.HA.PROXY.IP
 
 Step 7)
 
-Grab the whoami-hammer.sh script file & run it.
-Modify the script to point at the HA Proxy IP.
+Grab the whoami-hammer.sh script file.
+Modify the script to point to your cluster's HA Proxy IP.
 Run the script.
 
 	sh whoami-hammer.sh
@@ -83,7 +83,7 @@ Adjust the number of replicas & rerun
 
 Step 8) 
 
-DELETE EVERYTHING.
+DELETE EVERYTHING. :)
 
 
 
