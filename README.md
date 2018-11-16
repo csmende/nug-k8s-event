@@ -1,59 +1,71 @@
 # nug-k8s-event
 NetApp Kubernetes Service Files
 
+Step 1) 
+Sign up a new account at GCP, AWS or Azure. Free credits everywhere!
+Sign up at https://cloud.netapp.com
 
-Wifi: Ricoh NZ Visitor
-User: wifi.wel@ricoh.co.nz
-Pass: r1c0h1234
-Install kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+Step 2)
+If you chose GCP or Azure, you have Cloud Shell with kubectl installed. Good choice.
+If you chose AWS, fire up an Amazon Linux Nano instance & install kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
-Do the NKS thing before proceeding.
 
--Install a k8s cluster
--Install HAproxy (load balancer
+Step 3)
+Go to https://cloud.netapp.com, NetApp Kubernetes Service
+Choose your cloud & follow authentication instructions. GCP & AWS are easiest.
+Install HAproxy (load balancer)
 
-Setup kubectl:
-Download kubeconfig after creating cluster
-export KUBECONFIG=/path/to/kubeconfig
-kubectl config use-context stackpoint
+Step 4)
+Prep kubectl in your shell/VM:
+Download kubeconfig for your cluster from the NKS console
+
+	export KUBECONFIG=/path/to/kubeconfig
+	kubectl config use-context stackpoint
 
 Test connection:
-kubectl get nodes
+	kubectl get nodes
 
-Let’s deploy whoami from GitHub: (https://hub.docker.com/r/emilevauge/whoami/) 
-kubectl run whoami --image=emilevauge/whoami
+Step 5)
+Let’s deploy whoami from GitHub, https://hub.docker.com/r/emilevauge/whoami/
 
-kubectl scale deployment/whoami --replicas=6
+	kubectl run whoami --image=emilevauge/whoami
 
-kubectl expose deployment/whoami --port=80 --target-port=80 --type=NodePort
+Scale the deployment to four replicas
+	kubectl scale deployment/whoami --replicas=4
 
-Create the whoami-ingress.yaml file with this content:
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-name: whoami
-spec:
-backend:
-serviceName: whoami
-servicePort: 80
+Allow port 80 traffic
+	kubectl expose deployment/whoami --port=80 --target-port=80 --type=NodePort
 
-Create method with file:
-kubectl create -f whoami-ingress.yaml
+Step 5) 
+Grab the whoami-ingress.yaml file & create ingress rules
+
+	kubectl create -f whoami-ingress.yaml
 
 Check cluster:
-kubectl get ingress/whoami
+	kubectl get ingress/whoami
 
-Retrieve the page. Use the load balancer IP:
-curl -s http://xx.xx.xx.xx
+Step 6)
+Test retrieving the whoami http service. Using the HA Proxy load balancer IP.
 
-Create whoami-hammer.sh script file:
-for t in {1..10};
-do
-curl -s http://35.233.180.194/ \
-|grep "Hostname:" \
-|cut -d" " -f2;
-done \
-|sort \
-|uniq -c
+	curl -s http://xx.xx.xx.xx
 
-Run the whoami-hammer.sh script.
+Step 7)
+
+Grab the whoami-hammer.sh script file & run it.
+Modify the script to point at the HA Proxy IP.
+Run the script.
+	sh whoami-hammer.sh
+
+See the distribution of hits across the four workers
+
+Adjust the number of replicas & rerun
+	kubectl scale deployment/whoami --replicas=8
+	sh whoami-hammer.sh
+
+Step 8) 
+DELETE EVERYTHING.
+
+
+
+
+
