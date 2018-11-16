@@ -1,11 +1,13 @@
 # nug-k8s-event
 NetApp Kubernetes Service Files
 
-Step 1) 
+Step 1)
+
 Sign up a new account at GCP, AWS or Azure. Free credits everywhere!
 Sign up at https://cloud.netapp.com
 
 Step 2)
+
 If you chose GCP or Azure, you have Cloud Shell with kubectl installed. Good choice.
 
 If you chose AWS, fire up an Ubuntu instance & install kubectl:
@@ -17,11 +19,13 @@ If you chose AWS, fire up an Ubuntu instance & install kubectl:
 	sudo apt-get install -y kubectl
 
 Step 3)
+
 Go to https://cloud.netapp.com, NetApp Kubernetes Service
 Choose your cloud & follow authentication instructions. GCP & AWS are easiest.
 Install HAproxy (load balancer)
 
 Step 4)
+
 Prep kubectl in your shell/VM:
 Download kubeconfig for your cluster from the NKS console
 
@@ -33,6 +37,7 @@ Test connection:
 	kubectl get nodes
 
 Step 5)
+
 Let’s deploy whoami from GitHub, https://hub.docker.com/r/emilevauge/whoami/
 
 	kubectl run whoami --image=emilevauge/whoami
@@ -46,6 +51,7 @@ Allow port 80 traffic
 	kubectl expose deployment/whoami --port=80 --target-port=80 --type=NodePort
 
 Step 5) 
+
 Grab the whoami-ingress.yaml file & create ingress rules
 
 	kubectl create -f whoami-ingress.yaml
@@ -55,6 +61,7 @@ Check cluster:
 	kubectl get ingress/whoami
 
 Step 6)
+
 Test retrieving the whoami http service. Using the HA Proxy load balancer IP.
 
 	curl -s http://xx.xx.xx.xx
