@@ -21,7 +21,8 @@ NetApp Kubernetes Service Files
 
 ## Launch a NetApp Kubernetes Service cluster
 1. Go to https://cloud.netapp.com, sign in and click on NetApp Kubernetes Service Start Free Trial.
-1. Choose your cloud & follow authentication instructions. GCP & AWS are easiest.
+1. Select + New Cluster
+1. Choose your cloud and follow authentication instructions. GCP & AWS are easiest.
 	* AWS: https://stackpointcloud.com/community/tutorial/how-to-create-auth-credentials-on-amazon-web-services-aws
 	* GCP: https://stackpointcloud.com/community/tutorial/google-compute-engine-setup-and-authentication
 	* Azure: https://stackpointcloud.com/community/tutorial/how-to-create-auth-credentials-on-azure
