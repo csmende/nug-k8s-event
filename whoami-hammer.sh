@@ -1,8 +1,8 @@
 for t in {1..10};
- do
+do
  curl -s http://8.8.8.8/ \
- |grep "Hostname:" \
- |cut -d" " -f2;
+ | grep "Hostname:" \
+ | cut -d" " -f2;
 done \
- |sort \
- |uniq -c
+ | sort \
+ | uniq -c
