@@ -27,7 +27,17 @@ If not using ubuntu, or you don't like ```snap```:
 	sudo apt-get update
 	sudo apt-get install -y kubectl
 
-1. Install HAproxy (load balancer) as a NKS Solution
+## Launch a NetApp Kubernetes Service cluster
+1. Go to https://cloud.netapp.com, sign in and click on NetApp Kubernetes Service Start Free Trial.
+1. Choose your cloud & follow authentication instructions. GCP & AWS are easiest.
+	* AWS: https://stackpointcloud.com/community/tutorial/how-to-create-auth-credentials-on-amazon-web-services-aws
+	* GCP: https://stackpointcloud.com/community/tutorial/google-compute-engine-setup-and-authentication
+	* Azure: https://stackpointcloud.com/community/tutorial/how-to-create-auth-credentials-on-azure
+1. Wait for cluster to show successful install.
+
+## Add a load balancer 
+1. Click into your cluster, and scroll down to + Service
+1. Select HAproxy and click install.
 
 ## Configure kubectl
 1. Prep kubectl in your shell/VM.
@@ -69,7 +79,7 @@ If not using ubuntu, or you don't like ```snap```:
 
 ## Test lots of access!
 1. Grab the whoami-hammer.sh script file
-1. Modify the script to point at the HA Proxy IP.
+1. Modify the script to point at your HA Proxy IP.
 1. Run the script.
 
 		sh whoami-hammer.sh
@@ -81,6 +91,10 @@ If not using ubuntu, or you don't like ```snap```:
 		kubectl scale deployment/whoami --replicas=8
 		sh whoami-hammer.sh
 
-## DELETE EVERYTHING.
+## Enjoy!
+1. You now have a fully functional Kubernetes cluster running with a sample app.
+1. Explore some of the other services like Prometheus 
 
-DELETE EVERYTHING.
+## DELETE ALL THE THINGS.
+
+Don't forget to remove your cluster when you're done!
