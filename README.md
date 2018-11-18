@@ -15,17 +15,9 @@ NetApp Kubernetes Service Files
 
 		sudo snap install kubectl --classic
 
-1. Test access:
+1. Test install:
 
 		kubectl version
-	
-If not using ubuntu, or you don't like ```snap```:
-
-	sudo apt-get update && sudo apt-get install -y apt-transport-https
-	curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-	echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-	sudo apt-get update
-	sudo apt-get install -y kubectl
 
 ## Launch a NetApp Kubernetes Service cluster
 1. Go to https://cloud.netapp.com, sign in and click on NetApp Kubernetes Service Start Free Trial.
