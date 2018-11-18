@@ -27,13 +27,6 @@ If not using ubuntu, or you don't like ```snap```:
 	sudo apt-get update
 	sudo apt-get install -y kubectl
 
-## Launch a NetApp Kubernetes Service cluster
-1. Go to https://cloud.netapp.com, NetApp Kubernetes Service
-1. Choose your cloud & follow authentication instructions. GCP & AWS are easiest.
-	* AWS: https://stackpointcloud.com/community/tutorial/how-to-create-auth-credentials-on-amazon-web-services-aws
-	* GCP: https://stackpointcloud.com/community/tutorial/google-compute-engine-setup-and-authentication
-	* Azure: https://stackpointcloud.com/community/tutorial/how-to-create-auth-credentials-on-azure
-
 1. Install HAproxy (load balancer) as a NKS Solution
 
 ## Configure kubectl
