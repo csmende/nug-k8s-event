@@ -23,8 +23,8 @@ NetApp Kubernetes Service Files
 1. Go to https://cloud.netapp.com, sign in and click on NetApp Kubernetes Service Start Free Trial.
 1. Select + New Cluster
 1. Choose your cloud and follow authentication instructions. GCP & AWS are easiest.
-	* AWS: https://stackpointcloud.com/community/tutorial/how-to-create-auth-credentials-on-amazon-web-services-aws
 	* GCP: https://stackpointcloud.com/community/tutorial/google-compute-engine-setup-and-authentication
+	* AWS: https://stackpointcloud.com/community/tutorial/how-to-create-auth-credentials-on-amazon-web-services-aws
 	* Azure: https://stackpointcloud.com/community/tutorial/how-to-create-auth-credentials-on-azure
 1. Wait for cluster to show successful install.
 
@@ -32,9 +32,8 @@ NetApp Kubernetes Service Files
 1. Click into your cluster, and scroll down to + Service
 1. Select HAproxy and click install.
 
-## Configure kubectl
-1. Prep kubectl in your shell/VM.
-1. Download kubeconfig for your cluster from the NKS console
+## Configure kubectl environment
+1. Set variables & context.
 
 		export KUBECONFIG=/path/to/kubeconfig
 		kubectl config use-context stackpoint
@@ -61,19 +60,19 @@ NetApp Kubernetes Service Files
 
 		kubectl create -f whoami-ingress.yaml
 
-1. Check cluster:
+1. Check ingress routes for whoami:
 
 		kubectl get ingress/whoami
 
-## Test access!
-1. Test retrieving the whoami http service. Using the HA Proxy load balancer IP.
+## Test access to whoami app.
+1. Hit the web service via the HA Proxy load balancer IP.
 
 		curl -s http://xx.xx.xx.xx
 
 ## Test lots of access!
-1. Grab the whoami-hammer.sh script file
+1. Grab the whoami-hammer.sh script file.
 1. Modify the script to point at your HA Proxy IP.
-1. Run the script.
+1. Run the script - it will poll the service 10 times by default
 
 		sh whoami-hammer.sh
 
@@ -91,3 +90,8 @@ NetApp Kubernetes Service Files
 ## DELETE ALL THE THINGS.
 
 Don't forget to remove your cluster when you're done!
+
+## Thank You
+
+Special thanks to @DazWilkin for this idea via his medium.com article.
+
